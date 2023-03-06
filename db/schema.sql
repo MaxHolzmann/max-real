@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS get_it_done;
+CREATE DATABASE get_it_done;
