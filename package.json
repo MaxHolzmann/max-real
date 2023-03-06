@@ -11,6 +11,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "type": "module",
   "dependencies": {
     "bcrypt": "^5.0.0",
     "connect-session-sequelize": "^7.0.4",
@@ -22,7 +23,8 @@
     "mysql2": "^2.2.5",
     "passport": "^0.6.0",
     "passport-google-oauth20": "^2.0.0",
-    "sequelize": "^6.3.5"
+    "pdf-lib": "^1.17.1",
+    "sequelize": "^6.29.0"
   },
   "devDependencies": {
     "eslint": "^7.12.1",
