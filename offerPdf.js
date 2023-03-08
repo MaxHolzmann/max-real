@@ -5,6 +5,7 @@ import {ToWords} from 'to-words';
 
 
 async function modifyPdf() {
+  
   const url = 'https://dsps.wi.gov/Documents/BoardCouncils/REB/Forms/WB11.pdf'
   const existingPdfBytes = await fetch(url).then(res => res.arrayBuffer())
 
@@ -311,6 +312,7 @@ async function modifyPdf() {
   }
 
   const writeFourthPageOffer = () => {
+    // Property Address
     fourthPage.drawText('Property Address', {
       x: 100,
       y: 767,
@@ -318,7 +320,27 @@ async function modifyPdf() {
       font: helveticaFont,
       color: rgb(0.95, 0.1, 0.1),
     })
+
+    //Home inspection contingency marking 
+    fourthPage.drawText('X', {
+      x: 42,
+      y: 547,
+      size: fontSize,
+      font: helveticaFont,
+      color: rgb(0.95, 0.1, 0.1),
+    })
+
+    // add extra to home contingency line
+    fourthPage.drawText('Upon further line', {
+      x: 110,
+      y: 500,
+      size: fontSize,
+      font: helveticaFont,
+      color: rgb(0.95, 0.1, 0.1),
+    })
+
   }
+
 
   const writeFifthPageOffer = () => {
     
