@@ -6,13 +6,23 @@ import {ToWords} from 'to-words';
 
 async function modifyPdf() {
   
-  const url = 'https://dsps.wi.gov/Documents/BoardCouncils/REB/Forms/WB11.pdf'
+  const url = 'https://eforms.com/images/2018/07/Wisconsin-Residential-Offer-to-Purchase.pdf'
   const existingPdfBytes = await fetch(url).then(res => res.arrayBuffer())
 
   const pdfDoc = await PDFDocument.load(existingPdfBytes)
   const helveticaFont = await pdfDoc.embedFont(StandardFonts.Helvetica)
 
+  const pdfFields = pdfDoc.getForm().getFields();
 
+  pdfFields.map((field, i) => console.log({ name: field.getName(), i }))
+
+  // const fields = [
+  //   {name: "DATE", fields: [{
+  //     field: pdfFields
+  //   }]}
+  // ]
+  
+  
   const pages = pdfDoc.getPages()
   //Pages Of Offer
   const firstPage = pages[0]
@@ -42,6 +52,7 @@ async function modifyPdf() {
     }
   });
 
+  /*
   const writeFirstPageOffer = () => {
   //Date Text
   firstPage.drawText('Date Here', {
@@ -231,7 +242,7 @@ async function modifyPdf() {
     })
 
 
-    /* TIME IS OF THE ESSENCE LINES  & TEXT */
+
 
     secondPage.drawLine({
       start: {x: 250, y: 690},
@@ -379,6 +390,7 @@ async function modifyPdf() {
   writeEigthPageOffer();
   writeNinthPageOffer();
   writeFinalPageOffer();
+*/ 
 
   fs.writeFileSync('offer.pdf', await pdfDoc.save())
 
